@@ -119,3 +119,7 @@ Swagger/OpenAPI
 SemaphoreSlim
 
 System.Text.Json
+
+/ TODO: Implement multi-language support for error messages
+// This would check the Accept-Language header and return messages in the appropriate language
+// return StatusCode(500, Localize("InternalServerError", culture));
