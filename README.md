@@ -26,7 +26,7 @@ A RESTful API implemented in ASP.NET Core to retrieve the best stories from the 
 ### Using Command Line
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/HackerNewsAPI.git
+git clone https://github.com/AdanWorkforce/HackerNewsAPI.git
 cd HackerNewsAPI
 
 # Restore dependencies
