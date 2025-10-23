@@ -25,7 +25,8 @@ namespace HackerNewsAPI.Controllers
         {
             if (n <= 0 || n > 200)
             {
-                return BadRequest("El valor de n debe estar entre 1 y 200");
+                return BadRequest("The value of n must be between 1 and 200");
+                //return BadRequest("El valor de n debe estar entre 1 y 200");
             }
 
             try
@@ -36,7 +37,8 @@ namespace HackerNewsAPI.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving best stories with n={N}", n);
-                return StatusCode(500, "Error interno del servidor");
+                //we can return multi-language
+                return StatusCode(500, "Internal server error");
             }
         }
     }

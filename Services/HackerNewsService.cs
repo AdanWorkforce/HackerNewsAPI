@@ -38,14 +38,14 @@ namespace HackerNewsAPI.Services
 
             try
             {
-                // Obtener IDs de las mejores historias
+                // Get Ids
                 var storyIds = await GetBestStoryIdsAsync();
 
-                // Obtener detalles de las top n historias
+                // Get Details
                 var topStoryIds = storyIds.Take(n);
                 var stories = await GetStoriesDetailsAsync(topStoryIds);
 
-                // Ordenar por score descendente y mapear a response
+                // Orderby Score
                 return stories
                     .OrderByDescending(s => s.Score)
                     .Select(MapToStoryResponse);
@@ -67,7 +67,7 @@ namespace HackerNewsAPI.Services
             var response = await _httpClient.GetStringAsync(BestStoriesUrl);
             var storyIds = JsonSerializer.Deserialize<int[]>(response);
 
-            // Cachear los IDs por 5 minutos
+            // Cache Id, 5mins
             _cache.Set(cacheKey, storyIds, TimeSpan.FromMinutes(CacheExpirationMinutes));
 
             return storyIds;
@@ -90,7 +90,7 @@ namespace HackerNewsAPI.Services
             await _semaphore.WaitAsync();
             try
             {
-                // Doble verificación del cache después de adquirir el semáforo
+                // Double verification cache
                 if (_cache.TryGetValue(cacheKey, out cachedStory))
                     return cachedStory;
 
