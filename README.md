@@ -34,3 +34,6 @@ dotnet restore
 
 # Run the application
 dotnet run
+
+
+# Check Changes
